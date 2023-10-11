@@ -42,9 +42,61 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 
 **质衡** (Q-Bench) 是一个全新的基准，专门为测试**中文**多模态大模型在低层次机器视觉任务中的性能而设计。此基准集中于三个主要领域：感知（A1），描述（A2）和评估（A3）。这些领域分别对应于多模态大模型在理解和描述视觉信息方面的不同能力。
 
-- 我们预计在本周释放中文版的图文数据集以及中文进行图像质量评价（IQA）的代码范例。
-- 我们预计在两周内更新各种支持中文的大模型的表现。
 
+
+- 我们预计在本周释放中文进行图像质量评价（IQA）的代码范例。
+- 我们预计在两周内陆续更新各种支持中文的大模型的表现。
+
+
+
+## 数据
+
+### A1: 感知（问答）
+我们将数据集分成两半：[验证]集和[测试]集，划分如下。
+
+![](cn_data_release.png)
+
+
+
+同英文版Q-Bench一致，图片发布在 huggingface 仓库的 [images.tar](https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench/resolve/main/images_llvisionqa.tar) 文件中。
+
+验证集和测试集对应的中文标注地址如下：
+- [验证集](https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench/resolve/main/%E8%B4%A8%E8%A1%A1-%E9%97%AE%E7%AD%94-%E9%AA%8C%E8%AF%81%E9%9B%86.json)
+- [测试集](https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench/resolve/main/%E8%B4%A8%E8%A1%A1-%E9%97%AE%E7%AD%94-%E6%B5%8B%E8%AF%95%E9%9B%86.json)
+
+### A2: 描述
+
+描述任务需要的图片被发布在 [images.tar](https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench/resolve/main/images_lldescribe.tar) 文件中。
+
+### A3: 评价
+
+请参考[英文指南](https://github.com/VQAssessment/Q-Bench/tree/master/a3_iqa_databases)下载各个公开的图像质量评价数据集。
+
+## 榜单
+
+### A1: 感知（问答）
+
+|**model** | yes-or-no | what | how | distortion | others | in-context distortion | in-context others | 总分 |
+| - | - | - | - | - | - | -| - | -| 
+llava_v1.5 | 0.6473 | 0.5796 | 0.5659 | 0.5175 | 0.6412 | 0.5954 | 0.7061 | 0.6000 |
+
+1495
+|**model** | yes-or-no | what | how | distortion | others | in-context distortion | in-context others | 总分 |
+| - | - | - | - | - | - | -| - | -| 
+llava_v1.5 | 0.6496 | 0.6009 | 0.5556 | 0.5298 | 0.6611 | 0.5788 | 0.6882 | 0.6040 |
+
+我们后续还将测试以下模型：
+- [QWen-VL-Chat]
+- [VisualGLM-6B]
+- [InternLM-Composer]
+
+### A2: 描述
+
+敬请期待。
+
+### A3: 评价
+
+敬请期待。
 
 ## 联系
 

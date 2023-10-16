@@ -3,7 +3,7 @@
 
   <h1>质衡: 通用基础模型在底层视觉上的基准测试 </h1>
 
-_Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描述】数据集，以及中文提示下的图片质量评价。_
+_Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描述】。_
 
   <div>
       <a href="https://teowu.github.io/" target="_blank">Haoning Wu</a><sup>1</sup><sup>*</sup>,
@@ -30,8 +30,7 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 
 <a href="https://arxiv.org/abs/2309.14181"><strong>原始论文</strong></a> |
 <a href="https://vqassessment.github.io/Q-Bench"><strong>网站</strong></a> |
-     <a href="https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench"><strong>数据集 (LLVisionQA)</strong></a> |
- <a href="https://huggingface.co/datasets/nanyangtu/LLVisionQA-QBench"><strong>数据集 (LLDescribe)</strong></a> |
+     <a href="https://github.com/VQAssessment/Q-Bench/releases/tag/v1.0.1.1014datarelease"><strong>数据集 (Github Release版) </strong></a> |
 <a href="https://github.com/VQAssessment/Q-Bench"><strong>英文版Q-Bench Github Repo</strong></a>
 
   <div style="width: 80%; text-align: center; margin:auto;">
@@ -42,9 +41,8 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 
 **质衡** (Q-Bench) 是一个全新的基准，专门为测试**中文**多模态大模型在低层次机器视觉任务中的性能而设计。此基准集中于三个主要领域：感知（A1），描述（A2）和评估（A3）。这些领域分别对应于多模态大模型在理解和描述视觉信息方面的不同能力。
 
+未来会进行测评的模型：
 
-我们后续还将测试以下模型：
-- [InternLM-XComposer]（测试中）
 - [CogVLM] （待发布中文版）
 - [MPlug-Owl-Multilingual] （待发布中文版）
 
@@ -75,12 +73,14 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 
 ### A1: 感知（问答）
 
-由于测试的模型同时支持英语，因此我们除了对比模型间的能力外，还对比模型的双语能力差距。总的来说，各模型的中文表现始终略逊英文表现。
+由于测试的模型同时支持英语，因此我们除了对比模型间的能力外，还对比模型的双语能力差距。总的来说，大部分模型的中文表现始终略逊英文表现。唯一的例外也是中文表现最好的模型是`internlm-xcomposer-vl`，中文表现和英文表现基本相当。
 
 - 验证集
 
 |**模型** | yes-or-no | what | how | distortion | others | in-context distortion | in-context others | 总分 |
 | - | - | - | - | - | - | -| - | -| 
+| internlm-xcomposer-vl 英文 | 0.6800 | 0.6371 | 0.5780 | 0.5836 | 0.6875 | 0.5855 | 0.7061 | **0.6334** |
+| internlm-xcomposer-vl 中文 | 0.6491 | 0.6394 | 0.5821 | 0.5934 | 0.6921 | 0.5592 | 0.7346 | **0.6388** (+0.0054) |
 | llava_v1.5 英文 | 0.6909 | 0.6327 | 0.5639 | 0.5525 | 0.6852 | 0.6086 | 0.7306 | 0.6314 |
 | llava_v1.5 中文 | 0.6473 | 0.5796 | 0.5659 | 0.5175 | 0.6412 | 0.5954 | 0.7061 | 0.6000 (-0.0314) |
 | qwen_vl 英文 | 0.6309 | 0.5819 | 0.5639 | 0.5058 | 0.6273 | 0.5789 | 0.7388 | 0.5940 |
@@ -93,6 +93,8 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 
 |**模型** | yes-or-no | what | how | distortion | others | in-context distortion | in-context others | 总分 |
 | - | - | - | - | - | - | -| - | -| 
+| internlm-xcomposer-vl 英文 | 0.6733 | 0.5835 | 0.6235 | 0.5547 | 0.6897 | 0.5582 | 0.7605 | **0.6294** | 
+| internlm-xcomposer-vl 中文 | 0.6478 | 0.6508 | 0.5556 | 0.5432 | 0.6515 | 0.5993 | 0.7376 | **0.6187** (-0.0107) |
 | llava_v1.5 英文 | 0.6734 | 0.6334 | 0.5412 | 0.5278 | 0.6802 | 0.5856 | 0.7338 | 0.6181 |
 | llava_v1.5 中文 | 0.6496 | 0.6009 | 0.5556 | 0.5298 | 0.6611 | 0.5788 | 0.6882 | 0.6040 (-0.0141) |
 | qwen_vl 英文 | 0.6533 | 0.6074 | 0.5844 | 0.5413 | 0.6635 | 0.5822 | 0.7300 | 0.6167 |
@@ -111,6 +113,7 @@ _Q-Bench中文版，包含中文版【底层视觉问答】和【底层视觉描
 | qwen_vl | 12.79% | 53.05% | 34.16% | 1.21/2.00 |  62.46% | 31.58% | 5.96% | 0.44/2.00 |  15.24% | 34.23% | 50.54% | 1.35/2.00 |  3.00/6.00 |
 | visualglm | 6.48% | 52.58% | 40.94% | 1.34/2.00 |  76.80% | 19.76% | 3.44% | 0.27/2.00 |  0.49% | 31.52% | 67.98% | 1.67/2.00 |  3.29/6.00 |
 
+目前有关`internlm-xcomposer-vl`的中文描述能力正在测试中。
 
 
 ### A3: 评价
